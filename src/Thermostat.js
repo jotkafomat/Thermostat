@@ -30,4 +30,8 @@ class Thermostat {
     this.isSavingMode = false;
     this.maximumTemp = 32;
   }
+
+  reset(){
+    return this.temperature = 20;
+  }
 }

@@ -69,4 +69,12 @@ describe('Thermostat',function () {
 
   });
 
+  describe('#reset',function () {
+
+    it('resets temperature to 20',function () {
+
+      expect(thermostat.reset()).toEqual(20);
+    });
+  });
+
 });
