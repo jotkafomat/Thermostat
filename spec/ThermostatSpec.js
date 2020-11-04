@@ -27,7 +27,7 @@ describe('Thermostat',function () {
       expect(thermostat.up()).toEqual(21)
     });
 
-    it('cannot go above maximum temerature(25 or 32)',function () {
+    it('cannot go above maximum temperature(25 or 32)',function () {
 
       thermostat.temperature = thermostat.maximumTemp;
 
@@ -75,6 +75,28 @@ describe('Thermostat',function () {
 
       expect(thermostat.reset()).toEqual(20);
     });
+  });
+
+  describe('#energyUsage', function () {
+    it('it shows low usage when temp is below < 18',function () {
+      thermostat.temperature = 15
+
+      expect(thermostat.energyUsage()).toEqual('green');
+    });
+
+    it('it shows medium usage when temp is between 18 and 25',function () {
+      thermostat.temperature = 20
+
+      expect(thermostat.energyUsage()).toEqual('black');
+    });
+
+    it('it shows medium usage when temp is between 18 and 25',function () {
+      thermostat.temperature = 26
+
+      expect(thermostat.energyUsage()).toEqual('red');
+    });
+
+
   });
 
 });

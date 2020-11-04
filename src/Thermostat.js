@@ -34,4 +34,14 @@ class Thermostat {
   reset(){
     return this.temperature = 20;
   }
+
+  energyUsage() {
+    if (this.temperature < 18 ) {
+      return 'green';
+    }
+    if (this.temperature <= 25 ) {
+      return 'black';
+    }
+    return 'red';
+  }
 }
