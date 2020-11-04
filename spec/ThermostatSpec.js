@@ -34,7 +34,15 @@ describe('Thermostat',function () {
     thermostat.switchPowerSavingModeOn();
     expect(thermostat.isPowerSavingModeOn()).toBe(true);
   });
-  
+
+  it('can be reset to the default temperature', function() {
+    for (var i = 0; i < 6; i++) {
+      thermostat.up();
+    }
+    thermostat.resetTemperature();
+    expect(thermostat.getCurrentTemperature()).toEqual(20);
+  });
+
   describe('#up',function () {
 
     it('increases the temperature by one each time', function () {
@@ -44,6 +52,7 @@ describe('Thermostat',function () {
     });
 
   });
+
   describe('#down',function () {
 
     it('decreases the temperature by one each time', function () {
@@ -72,14 +81,6 @@ describe('Thermostat',function () {
   });
 });
 
-it('can be reset to the default temperature', function() {
-  for (var i = 0; i < 6; i++) {
-    thermostat.up();
-  }
-  thermostat.resetTemperature();
-  expect(thermostat.getCurrentTemperature()).toEqual(20);
-});
-
   describe('displaying usage levels', function() {
     describe('when the temperature is below 18 degrees', function() {
       it('it is considered low-usage', function() {
@@ -106,4 +107,5 @@ it('can be reset to the default temperature', function() {
       });
     });
   });
+  
 });
