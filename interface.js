@@ -1,6 +1,7 @@
 $(document).ready(function() {
 var thermostat = new Thermostat();
 updateTemperature();
+$('#power-saving-status').text('on');
 
 $('#up').click(function () {
   thermostat.up();
@@ -31,10 +32,12 @@ $('#pwsOff').click(function () {
 
   function updateTemperature(){
     $('#temperature').text(thermostat.temperature);
+    if(thermostat.energyUsage() === 'low-usage'){
+      $('#temperature').css('color', 'green')
+    } else if (thermostat.energyUsage() === 'medium-usage') {
+      $('#temperature').css('color', 'black')
+    } else {
+      $('#temperature').css('color', 'red')
+    }
   };
 });
-
-
-// $('element').on('event', function() {
-//
-// })
